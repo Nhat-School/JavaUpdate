@@ -52,9 +52,8 @@ public class ResultDAO extends DAO {
 
 				// Build Result
 				Result result = new Result();
-				int resultId = rs.getInt("resultId");
+				result.setId(rs.getInt("resultId"));
 				if (!rs.wasNull()) {
-					result.setId(resultId);
 					result.setFinishTime(rs.getString("finishTime"));
 					result.setLapsCompleted(rs.getInt("lapsCompleted"));
 				} else {

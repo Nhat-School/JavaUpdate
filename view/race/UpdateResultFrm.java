@@ -50,7 +50,7 @@ public class UpdateResultFrm extends JFrame implements ActionListener {
 			data[i][0] = r.getContract().getRacer().getDriverCode();
 			data[i][1] = r.getContract().getRacer().getName();
 			data[i][2] = r.getContract().getTeam().getName();
-			data[i][3] = r.getFinishTime() != null ? r.getFinishTime() : "";
+			data[i][3] = r.getFinishTime();
 			data[i][4] = String.valueOf(r.getLapsCompleted());
 		}
 
@@ -60,7 +60,6 @@ public class UpdateResultFrm extends JFrame implements ActionListener {
 			}
 		};
 		tblRacers = new JTable(tableModel);
-		tblRacers.setRowHeight(25);
 
 		JScrollPane scrollPane = new JScrollPane(tblRacers);
 		scrollPane.setPreferredSize(new Dimension(700, 250));
@@ -174,7 +173,7 @@ public class UpdateResultFrm extends JFrame implements ActionListener {
 						r.getContract().getRacer().getDriverCode(),
 						r.getContract().getRacer().getName(),
 						r.getContract().getTeam().getName(),
-						r.getFinishTime() != null ? r.getFinishTime() : "",
+						r.getFinishTime(),
 						String.valueOf(r.getLapsCompleted())
 				});
 			}
