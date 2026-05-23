@@ -60,7 +60,7 @@ public class ResultDAO extends DAO {
 
 				// Build Result
 				Result result = new Result();
-				result.setId(rs.getInt("resultId"));
+				result.setId(rs.getInt("resultid"));
 				if (!rs.wasNull()) {
 					result.setFinishTime(rs.getString("finishTime"));
 					result.setLapsCompleted(rs.getInt("lapsCompleted"));
@@ -95,7 +95,6 @@ public class ResultDAO extends DAO {
 		try {
 			for (Result result : results) {
 				if (result.getId() > 0) {
-					// Update existing result
 					String sql = "UPDATE tblResult SET finishTime = ?, lapsCompleted = ? WHERE id = ?";
 					PreparedStatement ps = con.prepareStatement(sql);
 					ps.setString(1, result.getFinishTime());
@@ -103,14 +102,13 @@ public class ResultDAO extends DAO {
 					ps.setInt(3, result.getId());
 					ps.executeUpdate();
 				} else {
-					// Insert new result
 					String sql = "INSERT INTO tblResult (finishTime, lapsCompleted, idStage, idContract, idUser) VALUES (?, ?, ?, ?, ?)";
 					PreparedStatement ps = con.prepareStatement(sql);
 					ps.setString(1, result.getFinishTime());
 					ps.setInt(2, result.getLapsCompleted());
 					ps.setInt(3, result.getStage().getId());
 					ps.setInt(4, result.getContract().getId());
-					ps.setInt(5, result.getUser().getId());
+					ps.setInt(5, result.getUser().getId()); 
 					ps.executeUpdate();
 				}
 			}

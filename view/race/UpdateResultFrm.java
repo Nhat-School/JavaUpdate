@@ -100,7 +100,7 @@ public class UpdateResultFrm extends JFrame implements ActionListener {
 				Result r = results.get(i);
 				String fTime = (String) model.getValueAt(i, 3);
 				String lapsStr = (String) model.getValueAt(i, 4);
-
+				// lap 
 				int laps = 0;
 				if (lapsStr != null && !lapsStr.trim().isEmpty()) {
 					try {
@@ -110,7 +110,7 @@ public class UpdateResultFrm extends JFrame implements ActionListener {
 						return;
 					}
 				}
-
+				// 
 				if (laps > stage.getNumberLaps() || laps < 0) {
 					JOptionPane.showMessageDialog(this, "Invalid laps");
 					return;
