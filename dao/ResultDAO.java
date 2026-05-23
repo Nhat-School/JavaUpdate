@@ -11,6 +11,10 @@ import model.Team;
 
 public class ResultDAO extends DAO {
 
+	public ResultDAO() {
+		super();
+	}
+
 	public ArrayList<Result> getRegisteredRacers(int stageID) {
 		ArrayList<Result> results = new ArrayList<Result>();
 		String sql = "SELECT r.id AS resultId, r.finishTime, r.lapsCompleted, " +
@@ -69,10 +73,7 @@ public class ResultDAO extends DAO {
 		return results;
 	}
 
-	/**
-	 * Update race results for a stage.
-	 * Inserts new results or updates existing ones.
-	 */
+
 	public boolean updateRaceResults(ArrayList<Result> results) {
 		boolean success = true;
 		try {

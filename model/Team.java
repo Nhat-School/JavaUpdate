@@ -8,7 +8,17 @@ public class Team implements Serializable {
 	private String name;
 	private String brand;
 
-	public Team() {}
+	public Team() {
+		super();
+	}
+
+	public Team(int id, String teamCode, String name, String brand) {
+		super();
+		this.id = id;
+		this.teamCode = teamCode;
+		this.name = name;
+		this.brand = brand;
+	}
 
 	public int getId() { return id; }
 	public void setId(int id) { this.id = id; }

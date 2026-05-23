@@ -12,7 +12,20 @@ public class Stage implements Serializable {
 	private Date time;
 	private String description;
 
-	public Stage() {}
+	public Stage() {
+		super();
+	}
+
+	public Stage(int id, String stageCode, String name, int numberLaps, String location, Date time, String description) {
+		super();
+		this.id = id;
+		this.stageCode = stageCode;
+		this.name = name;
+		this.numberLaps = numberLaps;
+		this.location = location;
+		this.time = time;
+		this.description = description;
+	}
 
 	public int getId() { return id; }
 	public void setId(int id) { this.id = id; }

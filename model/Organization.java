@@ -7,7 +7,16 @@ public class Organization implements Serializable {
 	private String name;
 	private String description;
 
-	public Organization() {}
+	public Organization() {
+		super();
+	}
+
+	public Organization(int id, String name, String description) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+	}
 
 	public int getId() { return id; }
 	public void setId(int id) { this.id = id; }

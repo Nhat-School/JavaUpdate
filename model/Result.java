@@ -10,7 +10,19 @@ public class Result implements Serializable {
 	private Contract contract;
 	private User user;
 
-	public Result() {}
+	public Result() {
+		super();
+	}
+
+	public Result(int id, String finishTime, int lapsCompleted, Stage stage, Contract contract, User user) {
+		super();
+		this.id = id;
+		this.finishTime = finishTime;
+		this.lapsCompleted = lapsCompleted;
+		this.stage = stage;
+		this.contract = contract;
+		this.user = user;
+	}
 
 	public int getId() { return id; }
 	public void setId(int id) { this.id = id; }

@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import model.Stage;
 
 public class StageDAO extends DAO {
+
+	public StageDAO() {
+		super();
+	}
+
 	public ArrayList<Stage> getAllStages() {
 		ArrayList<Stage> stages = new ArrayList<Stage>();
 		String sql = "SELECT id, stageCode, name, numberLaps, location, time, description FROM tblStage ORDER BY time";

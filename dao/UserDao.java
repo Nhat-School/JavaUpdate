@@ -6,6 +6,11 @@ import java.sql.ResultSet;
 import model.User;
 
 public class UserDao extends DAO {
+
+	public UserDao() {
+		super();
+	}
+
 	public boolean checkLogin(User user) {
 		boolean result = false;
 		String sql = "SELECT id, fullName FROM tblUser WHERE username = ? AND password = ?";

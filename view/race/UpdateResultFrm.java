@@ -89,10 +89,10 @@ public class UpdateResultFrm extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton btnClicked = (JButton) e.getSource();
 
+		if (tblRacers.isEditing()) {
+			tblRacers.getCellEditor().stopCellEditing();
+		}
 		if (btnClicked.equals(btnUpdate)) {
-			if (tblRacers.isEditing()) {
-				tblRacers.getCellEditor().stopCellEditing();
-			}
 
 			DefaultTableModel model = (DefaultTableModel) tblRacers.getModel();
 

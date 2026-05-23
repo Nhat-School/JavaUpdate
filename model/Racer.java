@@ -8,7 +8,17 @@ public class Racer implements Serializable {
 	private String name;
 	private String nationality;
 
-	public Racer() {}
+	public Racer() {
+		super();
+	}
+
+	public Racer(int id, String driverCode, String name, String nationality) {
+		super();
+		this.id = id;
+		this.driverCode = driverCode;
+		this.name = name;
+		this.nationality = nationality;
+	}
 
 	public int getId() { return id; }
 	public void setId(int id) { this.id = id; }

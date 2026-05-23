@@ -7,7 +7,16 @@ public class Tournament implements Serializable {
 	private String name;
 	private int year;
 
-	public Tournament() {}
+	public Tournament() {
+		super();
+	}
+
+	public Tournament(int id, String name, int year) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.year = year;
+	}
 
 	public int getId() { return id; }
 	public void setId(int id) { this.id = id; }
