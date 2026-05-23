@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import model.Contract;
 import model.Racer;
 import model.Result;
+import model.Stage;
 import model.Team;
+import model.User;
 
 public class ResultDAO extends DAO {
 
@@ -17,8 +19,8 @@ public class ResultDAO extends DAO {
 
 	public ArrayList<Result> getRegisteredRacers(int stageID) {
 		ArrayList<Result> results = new ArrayList<Result>();
-		String sql = "SELECT r.id AS resultId, r.finishTime, r.lapsCompleted, " +
-				"c.id AS contractId, rc.id AS racerId, rc.driverCode, rc.name AS racerName, rc.nationality, " +
+		String sql = "SELECT r.id AS resultId, r.finishTime, r.lapsCompleted, r.idUser AS userId, " +
+				"c.id AS contractId, c.startDate, c.endDate, rc.id AS racerId, rc.driverCode, rc.name AS racerName, rc.nationality, " +
 				"t.id AS teamId, t.teamCode, t.name AS teamName, t.brand " +
 				"FROM tblContract c " +
 				"JOIN tblRacer rc ON c.idRacer = rc.id " +
@@ -51,6 +53,8 @@ public class ResultDAO extends DAO {
 				// Build Contract
 				Contract contract = new Contract();
 				contract.setId(rs.getInt("contractId"));
+				contract.setStartDate(rs.getDate("startDate"));
+				contract.setEndDate(rs.getDate("endDate"));
 				contract.setRacer(racer);
 				contract.setTeam(team);
 
@@ -60,10 +64,22 @@ public class ResultDAO extends DAO {
 				if (!rs.wasNull()) {
 					result.setFinishTime(rs.getString("finishTime"));
 					result.setLapsCompleted(rs.getInt("lapsCompleted"));
+					
+					int userId = rs.getInt("userId");
+					if (!rs.wasNull()) {
+						User creator = new User();
+						creator.setId(userId);
+						result.setUser(creator);
+					}
 				} else {
 					result.setFinishTime("");
 				}
 				result.setContract(contract);
+				
+				// Build Stage
+				Stage stage = new Stage();
+				stage.setId(stageID);
+				result.setStage(stage);
 
 				results.add(result);
 			}

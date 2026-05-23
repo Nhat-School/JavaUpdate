@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import model.Stage;
+import model.Tournament;
 
 public class StageDAO extends DAO {
 
@@ -14,7 +15,7 @@ public class StageDAO extends DAO {
 
 	public ArrayList<Stage> getAllStages() {
 		ArrayList<Stage> stages = new ArrayList<Stage>();
-		String sql = "SELECT id, stageCode, name, numberLaps, location, time, description FROM tblStage ORDER BY time";
+		String sql = "SELECT id, stageCode, name, numberLaps, location, time, description, idTournament FROM tblStage ORDER BY time";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -27,6 +28,13 @@ public class StageDAO extends DAO {
 				stage.setLocation(rs.getString("location"));
 				stage.setTime(rs.getDate("time"));
 				stage.setDescription(rs.getString("description"));
+				
+				int idTournament = rs.getInt("idTournament");
+				if (!rs.wasNull()) {
+					Tournament tournament = new Tournament();
+					tournament.setId(idTournament);
+					stage.setTournament(tournament);
+				}
 				stages.add(stage);
 			}
 		} catch (Exception e) {

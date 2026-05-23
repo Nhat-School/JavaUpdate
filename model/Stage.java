@@ -11,12 +11,13 @@ public class Stage implements Serializable {
 	private String location;
 	private Date time;
 	private String description;
+	private Tournament tournament;
 
 	public Stage() {
 		super();
 	}
 
-	public Stage(int id, String stageCode, String name, int numberLaps, String location, Date time, String description) {
+	public Stage(int id, String stageCode, String name, int numberLaps, String location, Date time, String description, Tournament tournament) {
 		super();
 		this.id = id;
 		this.stageCode = stageCode;
@@ -25,6 +26,7 @@ public class Stage implements Serializable {
 		this.location = location;
 		this.time = time;
 		this.description = description;
+		this.tournament = tournament;
 	}
 
 	public int getId() { return id; }
@@ -47,6 +49,9 @@ public class Stage implements Serializable {
 
 	public String getDescription() { return description; }
 	public void setDescription(String description) { this.description = description; }
+	
+	public Tournament getTournament() { return tournament; }
+	public void setTournament(Tournament tournament) { this.tournament = tournament; }
 	
 	@Override
 	public String toString() {
